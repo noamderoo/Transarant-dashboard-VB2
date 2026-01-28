@@ -294,7 +294,7 @@
 
         /* Welcome Section */
         .welcome-section {
-            background: linear-gradient(135deg, var(--ing-orange) 0%, #ff8533 100%);
+            background-color: var(--ing-orange);
             color: var(--ing-white);
             padding: 32px;
             border-radius: 12px;
@@ -653,7 +653,7 @@
 
         /* Current Action Card */
         .current-action {
-            background: linear-gradient(135deg, var(--ing-blue) 0%, var(--ing-indigo) 100%);
+            background-color: var(--ing-blue);
             color: var(--ing-white);
         }
 
@@ -1040,7 +1040,7 @@
 
         /* Expectation Box */
         .expectation-box {
-            background: linear-gradient(135deg, var(--ing-light-grey) 0%, #eee9e4 100%);
+            background-color: var(--ing-light-grey);
             border-radius: 8px;
             padding: 20px;
             text-align: center;
@@ -1776,6 +1776,7 @@
         // Toggle secret mode
         userAvatar.addEventListener('click', function() {
             secretModeActive = !secretModeActive;
+            const root = document.documentElement;
             
             if (secretModeActive) {
                 // Hide logo
@@ -1791,6 +1792,11 @@
                 // Update page title
                 document.title = document.title.replace(/ING/g, 'bank');
                 
+                // Change ING colors to simple grey and blue
+                root.style.setProperty('--ing-orange', '#3B82F6'); // Blue
+                root.style.setProperty('--ing-indigo', '#6B7280'); // Grey
+                root.style.setProperty('--ing-blue', '#1F2937');   // Dark Grey
+                
                 // Visual feedback on avatar
                 this.style.backgroundColor = 'var(--ing-indigo)';
                 this.title = 'Klik om terug te schakelen naar normale modus';
@@ -1804,6 +1810,11 @@
                 allTextNodes.forEach(node => {
                     node.textContent = node.textContent.replace(/bank/g, 'ING');
                 });
+                
+                // Restore original ING colors
+                root.style.setProperty('--ing-orange', '#FF6600');
+                root.style.setProperty('--ing-indigo', 'rgb(82, 81, 153)');
+                root.style.setProperty('--ing-blue', '#000066');
                 
                 // Restore page title
                 document.title = document.title.replace(/bank/g, 'ING');
