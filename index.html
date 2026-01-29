@@ -1075,6 +1075,276 @@
             color: var(--ing-indigo);
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--ing-white);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background-color: var(--ing-light-grey);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background-color: var(--ing-border-grey);
+        }
+
+        .modal-close svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--ing-black);
+        }
+
+        .modal-header {
+            margin-bottom: 24px;
+            padding-right: 40px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ing-blue);
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: var(--ing-grey);
+        }
+
+        .modal-body {
+            color: var(--ing-black);
+            line-height: 1.6;
+        }
+
+        .modal-body p {
+            margin-bottom: 16px;
+        }
+
+        .modal-body strong {
+            color: var(--ing-blue);
+            font-weight: 600;
+        }
+
+        .document-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .document-status-badge.complete {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+
+        .document-status-badge.pending {
+            background-color: rgba(255, 102, 0, 0.1);
+            color: var(--ing-orange);
+        }
+
+        /* Chat Modal Styles */
+        .chat-modal {
+            max-width: 500px;
+        }
+
+        .chat-messages {
+            background-color: var(--ing-light-grey);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 16px;
+            animation: messageSlideIn 0.3s ease;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .chat-message.advisor {
+            text-align: left;
+        }
+
+        .chat-message.user {
+            text-align: right;
+        }
+
+        .chat-bubble {
+            display: inline-block;
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .chat-message.advisor .chat-bubble {
+            background-color: var(--ing-white);
+            color: var(--ing-black);
+            border: 1px solid var(--ing-border-grey);
+        }
+
+        .chat-message.user .chat-bubble {
+            background-color: var(--ing-orange);
+            color: var(--ing-white);
+        }
+
+        .chat-sender {
+            font-size: 12px;
+            color: var(--ing-grey);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--ing-border-grey);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            transition: border-color 0.2s ease;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--ing-orange);
+        }
+
+        .chat-input::placeholder {
+            color: var(--ing-grey);
+            opacity: 0.6;
+        }
+
+        .chat-send-btn {
+            padding: 12px 24px;
+            background-color: var(--ing-orange);
+            color: var(--ing-white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-send-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .chat-send-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--ing-white);
+        }
+
+        /* Step Details Expansion */
+        .next-step-item {
+            cursor: pointer;
+            flex-wrap: wrap;
+        }
+
+        .next-step-details {
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding-top 0.4s ease;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .next-step-item.expanded .next-step-details {
+            max-height: 300px;
+            padding-top: 16px;
+            margin-top: 16px;
+        }
+
+        .next-step-details p {
+            font-size: 14px;
+            color: var(--ing-grey);
+            line-height: 1.6;
+            padding: 16px;
+            background-color: var(--ing-light-grey);
+            border-radius: 8px;
+            margin: 0;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .dashboard-grid {
@@ -1444,6 +1714,9 @@
                                 <div class="date">27 jan</div>
                                 <div class="label">Verwacht</div>
                             </div>
+                            <div class="next-step-details">
+                                <p>De taxatie is een belangrijk onderdeel van uw hypotheekaanvraag. Een gecertificeerde taxateur bezoekt de woning en beoordeelt de waarde op basis van de staat, ligging en vergelijkbare woningen in de buurt. Dit rapport gebruiken wij om te bepalen of het hypotheekbedrag in verhouding staat tot de werkelijke waarde van de woning. De taxatie duurt gemiddeld 1-2 uur en u hoeft niet aanwezig te zijn, maar het kan wel handig zijn om eventuele vragen direct te kunnen beantwoorden.</p>
+                            </div>
                         </div>
                         <div class="next-step-item">
                             <div class="next-step-icon">
@@ -1458,6 +1731,9 @@
                             <div class="next-step-date">
                                 <div class="date">29 jan</div>
                                 <div class="label">Verwacht</div>
+                            </div>
+                            <div class="next-step-details">
+                                <p>Zodra de kredietbeoordeling is afgerond, ontvangt u van ons een uitgebreid bericht met de uitkomst. In dit bericht leggen we uit wat de vervolgstappen zijn en of er eventueel nog aanvullende informatie nodig is. U krijgt deze informatie zowel per e-mail als in dit dashboard, zodat u altijd en overal de status kunt bekijken. Ook kunt u op dat moment eventuele vragen stellen aan uw adviseur via de chat functie.</p>
                             </div>
                         </div>
                     </div>
@@ -1681,6 +1957,54 @@
         </div>
     </main>
 
+    <!-- Document Modal -->
+    <div class="modal-overlay" id="documentModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal('documentModal')">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </div>
+            <div class="modal-header">
+                <h2 class="modal-title" id="documentTitle"></h2>
+                <div class="document-status-badge" id="documentStatusBadge"></div>
+            </div>
+            <div class="modal-body" id="documentBody"></div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="modal-overlay" id="chatModal">
+        <div class="modal-content chat-modal">
+            <div class="modal-close" onclick="closeModal('chatModal')">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </div>
+            <div class="modal-header">
+                <h2 class="modal-title">Stel een vraag aan uw adviseur</h2>
+                <p class="modal-subtitle">Marieke Bakker - Hypotheekadviseur</p>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message advisor">
+                    <div class="chat-sender">Marieke Bakker</div>
+                    <div class="chat-bubble">
+                        Hallo Jan! Ik ben er om al uw vragen te beantwoorden. Waar kan ik u mee helpen?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="bijv. Wanneer kan ik de sleutels ophalen?">
+                <button class="chat-send-btn" onclick="sendChatMessage()">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                    Verstuur
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Notification bell toggle
         const notificationBell = document.querySelector('.notification-bell');
@@ -1792,13 +2116,35 @@
                 // Update page title
                 document.title = document.title.replace(/ING/g, 'bank');
                 
-                // Change ING colors to simple grey and blue
-                root.style.setProperty('--ing-orange', '#3B82F6'); // Blue
-                root.style.setProperty('--ing-indigo', '#6B7280'); // Grey
-                root.style.setProperty('--ing-blue', '#1F2937');   // Dark Grey
+                // Change ING colors to new custom scheme
+                root.style.setProperty('--ing-orange', '#C46A2D');  // Accent: Warm koper/oranje-bruin
+                root.style.setProperty('--ing-indigo', '#F4EFEA');  // Secondary: Licht zand
+                root.style.setProperty('--ing-blue', '#0E2A3B');    // Primary: Diep navy
+                root.style.setProperty('--ing-black', '#2B2B2B');   // Text: Antraciet
+                
+                // Make specific elements darker for better visibility
+                // 1. Expectation icon (clock icon)
+                document.querySelectorAll('.expectation-icon svg').forEach(svg => {
+                    svg.style.fill = '#0E2A3B';
+                });
+                
+                // 2. "3 weken" text
+                document.querySelectorAll('.expectation-highlight').forEach(el => {
+                    el.style.color = '#0E2A3B';
+                });
+                
+                // 3. Document icons
+                document.querySelectorAll('.document-icon svg').forEach(svg => {
+                    svg.style.fill = '#0E2A3B';
+                });
+                
+                // 4. Contact avatar (Marieke Bakker)
+                document.querySelectorAll('.contact-avatar').forEach(avatar => {
+                    avatar.style.backgroundColor = '#8B6F47';  // Warme bruin/brons kleur die beter zichtbaar is
+                });
                 
                 // Visual feedback on avatar
-                this.style.backgroundColor = 'var(--ing-indigo)';
+                this.style.backgroundColor = 'var(--ing-orange)';
                 this.title = 'Klik om terug te schakelen naar normale modus';
             } else {
                 // Show logo
@@ -1819,6 +2165,27 @@
                 // Restore page title
                 document.title = document.title.replace(/bank/g, 'ING');
                 
+                // Restore original styles for elements that were darkened
+                // 1. Expectation icon
+                document.querySelectorAll('.expectation-icon svg').forEach(svg => {
+                    svg.style.fill = '';
+                });
+                
+                // 2. "3 weken" text
+                document.querySelectorAll('.expectation-highlight').forEach(el => {
+                    el.style.color = '';
+                });
+                
+                // 3. Document icons
+                document.querySelectorAll('.document-icon svg').forEach(svg => {
+                    svg.style.fill = '';
+                });
+                
+                // 4. Contact avatar
+                document.querySelectorAll('.contact-avatar').forEach(avatar => {
+                    avatar.style.backgroundColor = '';
+                });
+                
                 // Reset avatar color
                 this.style.backgroundColor = 'var(--ing-orange)';
                 this.title = '';
@@ -1838,13 +2205,146 @@
             this.style.transform = 'scale(1)';
         });
 
-        // Add smooth scrolling and interactivity
+        // Document modal functionality
+        const documentData = {
+            'Werkgeversverklaring': {
+                status: 'complete',
+                statusText: 'Goedgekeurd',
+                content: `<p><strong>Datum ontvangst:</strong> 16 januari 2026</p>
+                         <p><strong>Werkgever:</strong> ABC Bedrijven B.V.</p>
+                         <p><strong>Functie:</strong> Senior Projectmanager</p>
+                         <p><strong>Dienstverband:</strong> Onbepaalde tijd sinds 1 maart 2018</p>
+                         <p><strong>Bruto maandsalaris:</strong> €4.850,-</p>
+                         <p>Uw werkgeversverklaring is volledig en correct bevonden. We hebben alle benodigde informatie over uw dienstverband en salaris ontvangen. Dit document is gebruikt om uw inkomen te verifiëren en uw leencapaciteit te berekenen.</p>
+                         <p><strong>Status:</strong> Dit document is gecontroleerd en goedgekeurd door onze acceptatieafdeling op 18 januari 2026.</p>`
+            },
+            'Salarisstroken (3x)': {
+                status: 'complete',
+                statusText: 'Goedgekeurd',
+                content: `<p><strong>Periode:</strong> Oktober, november en december 2025</p>
+                         <p><strong>Gemiddeld bruto inkomen:</strong> €4.850,- per maand</p>
+                         <p><strong>Netto inkomen:</strong> Gemiddeld €3.240,- per maand</p>
+                         <p>We hebben uw laatste drie salarisstroken ontvangen en gecontroleerd. Deze komen overeen met de informatie uit uw werkgeversverklaring. Uw inkomen is stabiel en voldoende om de gevraagde hypotheek te kunnen dragen.</p>
+                         <p><strong>Bijzonderheden:</strong> Geen afwijkingen geconstateerd. Alle salariscomponenten zijn duidelijk en consistent.</p>
+                         <p><strong>Status:</strong> Alle drie de salarisstroken zijn goedgekeurd op 18 januari 2026.</p>`
+            },
+            'Koopovereenkomst': {
+                status: 'complete',
+                statusText: 'Goedgekeurd',
+                content: `<p><strong>Woning:</strong> Hoofdstraat 123, 1012 AB Amsterdam</p>
+                         <p><strong>Koopsom:</strong> €475.000,- k.k.</p>
+                         <p><strong>Datum ondertekening:</strong> 10 januari 2026</p>
+                         <p><strong>Voorgestelde leverdatum:</strong> 15 maart 2026</p>
+                         <p><strong>Ontbindende voorwaarden:</strong> Financiering en bouwkundige keuring</p>
+                         <p>Uw koopovereenkomst is door ons juridisch team beoordeeld en goedgekeurd. Alle standaardclausules zijn aanwezig en er zijn geen ongebruikelijke voorwaarden die problemen kunnen veroorzaken voor de hypotheekverstrekking.</p>
+                         <p><strong>Let op:</strong> De ontbindende voorwaarde voor financiering is geldig tot 15 februari 2026. We streven ernaar om uw hypotheek ruim voor die datum definitief goedgekeurd te hebben.</p>`
+            },
+            'Taxatierapport': {
+                status: 'pending',
+                statusText: 'In afwachting',
+                content: `<p><strong>Status:</strong> Nog niet ontvangen</p>
+                         <p><strong>Geplande taxatiedatum:</strong> Te bepalen na goedkeuring kredietbeoordeling</p>
+                         <p><strong>Taxateur:</strong> Wordt nog toegewezen</p>
+                         <p>Het taxatierapport is een onafhankelijke waardering van de woning die u wilt kopen. Dit rapport wordt opgesteld door een gecertificeerde taxateur die is aangesloten bij het Nederlands Register Vastgoed Taxateurs (NRVT).</p>
+                         <p><strong>Wat wordt er getaxeerd?</strong></p>
+                         <p>De taxateur beoordeelt de staat van de woning, de ligging, vergelijkbare woningen in de buurt, en eventuele gebreken of bijzonderheden. Op basis hiervan wordt de marktwaarde bepaald.</p>
+                         <p><strong>Volgende stappen:</strong> Zodra de kredietbeoordeling is goedgekeurd, plannen we automatisch een taxateur in. U ontvangt hierover bericht en de taxateur zal contact met u opnemen om een afspraak te maken.</p>`
+            }
+        };
+
+        // Add smooth scrolling and interactivity + document click handlers
         document.querySelectorAll('.document-item').forEach(item => {
+            item.style.cursor = 'pointer';
             item.addEventListener('click', function() {
+                const docName = this.querySelector('.document-name').textContent;
+                const docData = documentData[docName];
+                
+                if (docData) {
+                    document.getElementById('documentTitle').textContent = docName;
+                    document.getElementById('documentBody').innerHTML = docData.content;
+                    
+                    const badge = document.getElementById('documentStatusBadge');
+                    badge.textContent = docData.statusText;
+                    badge.className = 'document-status-badge ' + docData.status;
+                    
+                    document.getElementById('documentModal').classList.add('active');
+                }
+                
                 this.style.transform = 'scale(0.98)';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
                 }, 100);
+            });
+        });
+
+        // Close modal function
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // Chat functionality
+        document.querySelector('.btn-primary.btn-full').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('chatModal').classList.add('active');
+            document.getElementById('chatInput').focus();
+        });
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const chatMessages = document.getElementById('chatMessages');
+                
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message user';
+                userMessage.innerHTML = `
+                    <div class="chat-sender">Jan de Vries</div>
+                    <div class="chat-bubble">${message}</div>
+                `;
+                chatMessages.appendChild(userMessage);
+                
+                // Clear input
+                input.value = '';
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate advisor response
+                setTimeout(() => {
+                    const advisorMessage = document.createElement('div');
+                    advisorMessage.className = 'chat-message advisor';
+                    advisorMessage.innerHTML = `
+                        <div class="chat-sender">Marieke Bakker</div>
+                        <div class="chat-bubble">Bedankt voor uw vraag! Ik heb uw bericht ontvangen en zal zo snel mogelijk reageren. Meestal kunt u binnen 2 werkuren een reactie verwachten.</div>
+                    `;
+                    chatMessages.appendChild(advisorMessage);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1500);
+            }
+        }
+
+        // Send message on Enter key
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
+
+        // Next step expansion
+        document.querySelectorAll('.next-step-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('expanded');
             });
         });
 
