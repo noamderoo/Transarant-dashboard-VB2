@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ING Hypotheek Dashboard</title>
+    <title>ING | Hypothecaire Financiering - Cliëntportaal</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,8 +13,8 @@
             --ing-grey: #ABA195;
             --ing-black: #000000;
             --ing-white: #FFFFFF;
-            --ing-light-grey: #f5f4f2;
-            --ing-border-grey: #e0ddd8;
+            --ing-light-grey: #f8f9fa;
+            --ing-border-grey: #dee2e6;
         }
 
         * {
@@ -27,68 +27,73 @@
             font-family: 'Open Sans', Arial, Helvetica, sans-serif;
             background-color: var(--ing-light-grey);
             color: var(--ing-black);
-            font-size: 16px;
-            line-height: 1.5;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         /* Header */
         .header {
             background-color: var(--ing-white);
-            padding: 16px 32px;
+            padding: 12px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid var(--ing-border-grey);
         }
 
         .header-left {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 32px;
         }
 
         .logo {
-            height: 40px;
+            height: 36px;
         }
 
         .header-title {
-            font-size: 20px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--ing-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .header-user {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
 
         .user-avatar {
-            width: 40px;
-            height: 40px;
-            background-color: var(--ing-orange);
+            width: 36px;
+            height: 36px;
+            background-color: var(--ing-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--ing-white);
             font-weight: 600;
+            font-size: 13px;
         }
 
         .user-name {
             font-weight: 600;
             color: var(--ing-blue);
+            font-size: 14px;
         }
 
         /* Notification Bell */
         .notification-bell {
             position: relative;
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -101,21 +106,21 @@
         }
 
         .notification-bell svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: var(--ing-blue);
         }
 
         .notification-badge {
             position: absolute;
-            top: 8px;
-            right: 8px;
+            top: 4px;
+            right: 4px;
             background-color: var(--ing-orange);
             color: var(--ing-white);
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 11px;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -125,19 +130,19 @@
         /* Notification Dropdown */
         .notification-dropdown {
             position: absolute;
-            top: 60px;
-            right: 32px;
-            width: 380px;
+            top: 56px;
+            right: 40px;
+            width: 420px;
             background-color: var(--ing-white);
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
             border: 1px solid var(--ing-border-grey);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
             z-index: 1000;
-            max-height: 500px;
+            max-height: 520px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -155,16 +160,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background-color: var(--ing-light-grey);
         }
 
         .notification-header h3 {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--ing-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .mark-all-read {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--ing-orange);
             cursor: pointer;
             font-weight: 600;
@@ -210,11 +218,11 @@
 
         .notification-list {
             overflow-y: auto;
-            max-height: 400px;
+            max-height: 440px;
         }
 
         .notification-item {
-            padding: 16px 20px;
+            padding: 14px 20px;
             border-bottom: 1px solid var(--ing-border-grey);
             cursor: pointer;
             transition: background-color 0.2s ease;
@@ -231,7 +239,7 @@
         }
 
         .notification-item.unread {
-            background-color: rgba(255, 102, 0, 0.05);
+            background-color: rgba(255, 102, 0, 0.04);
         }
 
         .notification-icon {
@@ -243,7 +251,7 @@
                 justify-content: center;
                 flex-shrink: 0;
                 margin-top: 6px;
-            background-color: var(--ing-blue);
+            background-color: var(--ing-orange);
         }
 
             .notification-item.unread .notification-icon {
@@ -268,55 +276,76 @@
 
         .notification-title {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--ing-black);
             margin-bottom: 4px;
         }
 
         .notification-text {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--ing-grey);
-            line-height: 1.4;
+            line-height: 1.5;
             margin-bottom: 4px;
         }
 
         .notification-time {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--ing-grey);
         }
 
         /* Main Dashboard Container */
         .dashboard-container {
-            max-width: 1400px;
-            margin: 32px auto;
-            padding: 0 24px;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 32px 40px;
         }
 
         /* Welcome Section */
         .welcome-section {
-            background-color: var(--ing-orange);
+            background: linear-gradient(135deg, var(--ing-blue) 0%, #001a4d 100%);
             color: var(--ing-white);
-            padding: 32px;
-            border-radius: 12px;
-            margin-bottom: 24px;
+            padding: 28px 36px;
+            border-radius: 8px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome-content {
+            flex: 1;
         }
 
         .welcome-title {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
         }
 
         .welcome-subtitle {
-            font-size: 16px;
-            opacity: 0.9;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .welcome-meta {
+            text-align: right;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .welcome-meta strong {
+            display: block;
+            font-size: 13px;
+            opacity: 1;
+            margin-bottom: 2px;
         }
 
         /* Dashboard Grid */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 24px;
+            grid-template-columns: 1fr 380px;
+            gap: 28px;
         }
 
         .main-column {
@@ -334,15 +363,15 @@
         /* Card Styling */
         .card {
             background-color: var(--ing-white);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 24px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
             border: 1px solid var(--ing-border-grey);
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.2s ease;
         }
 
         .card:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
         .card-header {
@@ -350,33 +379,38 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--ing-border-grey);
         }
 
         .card-title {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 700;
             color: var(--ing-blue);
             display: flex;
             align-items: center;
             gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .card-icon {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: var(--ing-orange);
         }
 
         .card-badge {
-            background-color: var(--ing-orange);
-            color: var(--ing-white);
-            padding: 4px 12px;
-            border-radius: 20px;
+            background-color: var(--ing-light-grey);
+            color: var(--ing-blue);
+            padding: 6px 14px;
+            border-radius: 4px;
             font-size: 12px;
             font-weight: 600;
+            border: 1px solid var(--ing-border-grey);
         }
 
-        /* Progress Timeline - Subtiel & Modern */
+        /* Progress Timeline - Professional & Minimal */
         .progress-timeline {
             position: relative;
             padding: 0;
@@ -387,7 +421,7 @@
             align-items: flex-start;
             gap: 20px;
             position: relative;
-            padding-bottom: 40px;
+            padding-bottom: 32px;
         }
 
         .timeline-step:last-child {
@@ -398,10 +432,10 @@
         .timeline-step::before {
             content: '';
             position: absolute;
-            left: 13px;
-            top: 28px;
-            width: 2px;
-            height: calc(100% - 28px);
+            left: 15px;
+            top: 32px;
+            width: 1px;
+            height: calc(100% - 32px);
             background-color: var(--ing-border-grey);
         }
 
@@ -410,7 +444,7 @@
         }
 
         .timeline-step.completed::before {
-            background-color: var(--ing-orange);
+            background-color: #28a745;
         }
 
         .timeline-step.active::before {
@@ -419,14 +453,14 @@
 
         /* Kleinere circulaire knooppunten */
         .step-indicator {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             flex-shrink: 0;
             z-index: 2;
             background-color: var(--ing-white);
@@ -435,8 +469,8 @@
         }
 
         .step-indicator.completed {
-            background-color: var(--ing-orange);
-            border-color: var(--ing-orange);
+            background-color: #28a745;
+            border-color: #28a745;
             color: var(--ing-white);
         }
 
@@ -449,43 +483,44 @@
             background-color: var(--ing-orange);
             border-color: var(--ing-orange);
             color: var(--ing-white);
-            box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.15);
-            animation: subtlePulse 2s ease-in-out infinite;
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.15);
+            animation: subtlePulse 2.5s ease-in-out infinite;
         }
 
         .step-indicator.pending {
-            background-color: var(--ing-white);
+            background-color: var(--ing-light-grey);
             color: var(--ing-grey);
             border: 2px solid var(--ing-border-grey);
         }
 
         @keyframes subtlePulse {
             0%, 100% {
-                box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.15);
+                box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.15);
             }
             50% {
-                box-shadow: 0 0 0 6px rgba(255, 102, 0, 0.1);
+                box-shadow: 0 0 0 5px rgba(255, 102, 0, 0.08);
             }
         }
 
         .step-content {
             flex: 1;
-            padding-top: 2px;
+            padding-top: 4px;
         }
 
         .step-title {
-            font-weight: 700;
+            font-weight: 600;
             color: var(--ing-blue);
-            margin-bottom: 6px;
-            font-size: 15px;
-            letter-spacing: -0.2px;
-            line-height: 1.6;
+            margin-bottom: 4px;
+            font-size: 14px;
+            letter-spacing: -0.1px;
+            line-height: 1.5;
         }
 
         .step-description {
             color: var(--ing-grey);
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 8px;
+            line-height: 1.5;
         }
 
         .step-duration {
@@ -494,19 +529,20 @@
             gap: 6px;
             background-color: var(--ing-light-grey);
             padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
+            border-radius: 4px;
+            font-size: 11px;
             color: var(--ing-black);
+            font-weight: 500;
         }
 
         .timeline-step.active .step-duration {
-            background-color: rgba(255, 102, 0, 0.1);
+            background-color: rgba(255, 102, 0, 0.08);
             color: var(--ing-orange);
         }
 
         .step-duration svg {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             fill: var(--ing-grey);
         }
 
@@ -527,8 +563,8 @@
         .step-content::after {
             content: '';
             display: inline-block;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             margin-left: 8px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ABA195' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
             background-size: contain;
@@ -536,7 +572,7 @@
             background-position: center;
             transition: transform 0.3s ease;
             vertical-align: middle;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         .timeline-step.expanded .step-content::after {
@@ -554,7 +590,7 @@
 
         .timeline-step.expanded .step-details {
             max-height: 600px;
-            margin-top: 16px;
+            margin-top: 14px;
             padding-top: 0;
             opacity: 1;
         }
@@ -562,7 +598,7 @@
         .step-detail-item {
             display: flex;
             gap: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             position: relative;
             padding-left: 8px;
         }
@@ -570,8 +606,8 @@
         /* Kleine knooppunten voor detail items */
         .step-detail-item::before {
             content: '';
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: var(--ing-light-grey);
             border: 2px solid var(--ing-border-grey);
@@ -583,12 +619,12 @@
         }
 
         .timeline-step.completed .step-detail-item::before {
-            background-color: rgba(255, 102, 0, 0.2);
-            border-color: var(--ing-orange);
+            background-color: rgba(40, 167, 69, 0.2);
+            border-color: #28a745;
         }
 
         .timeline-step.active .step-detail-item::before {
-            background-color: rgba(255, 102, 0, 0.3);
+            background-color: rgba(255, 102, 0, 0.2);
             border-color: var(--ing-orange);
         }
 
@@ -596,16 +632,16 @@
         .timeline-step.expanded::after {
             content: '';
             position: absolute;
-            left: 13px;
-            top: 28px;
-            width: 2px;
-            height: calc(100% - 28px);
+            left: 15px;
+            top: 32px;
+            width: 1px;
+            height: calc(100% - 32px);
             background-color: var(--ing-border-grey);
             z-index: 0;
         }
 
         .timeline-step.completed.expanded::after {
-            background-color: rgba(255, 102, 0, 0.3);
+            background-color: rgba(40, 167, 69, 0.3);
         }
 
         .timeline-step.active.expanded::after {
@@ -623,8 +659,10 @@
         .step-detail-title {
             font-weight: 600;
             color: var(--ing-blue);
-            font-size: 13px;
+            font-size: 12px;
             margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .step-detail-text {
@@ -635,17 +673,19 @@
 
         /* Last Update Info */
         .last-update {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--ing-grey);
             margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .last-update svg {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             fill: var(--ing-grey);
             flex-shrink: 0;
             opacity: 0.6;
@@ -653,74 +693,29 @@
 
         /* Current Action Card */
         .current-action {
-            background-color: var(--ing-blue);
+            background: linear-gradient(135deg, var(--ing-blue) 0%, #001a4d 100%);
             color: var(--ing-white);
         }
 
         .current-action .card-title {
             color: var(--ing-white);
+            border-bottom-color: rgba(255,255,255,0.15);
+        }
+
+        .current-action .card-header {
+            border-bottom-color: rgba(255,255,255,0.15);
         }
 
         .action-content {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
         }
 
         .action-icon {
-            width: 64px;
-            height: 64px;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .action-icon svg {
-            width: 32px;
-            height: 32px;
-            fill: var(--ing-white);
-        }
-
-        .action-text h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .action-text p {
-            opacity: 0.85;
-            font-size: 14px;
-        }
-
-        /* Next Step Card */
-        .next-step-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .next-step-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px;
-            background-color: var(--ing-white);
-            border-radius: 8px;
-            border: 1px solid var(--ing-border-grey);
-            transition: all 0.2s ease;
-        }
-
-        .next-step-item:hover {
-            box-shadow: 0 2px 12px rgba(255, 102, 0, 0.08);
-            border-color: rgba(255, 102, 0, 0.2);
-        }
-
-        .next-step-icon {
-            width: 48px;
-            height: 48px;
-            background-color: rgba(255, 102, 0, 0.08);
+            width: 56px;
+            height: 56px;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -728,21 +723,74 @@
             flex-shrink: 0;
         }
 
+        .action-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--ing-white);
+        }
+
+        .action-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .action-text p {
+            opacity: 0.85;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Next Step Card */
+        .next-step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .next-step-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background-color: var(--ing-light-grey);
+            border-radius: 6px;
+            border: 1px solid var(--ing-border-grey);
+            transition: all 0.2s ease;
+        }
+
+        .next-step-item:hover {
+            background-color: var(--ing-white);
+            border-color: var(--ing-orange);
+        }
+
+        .next-step-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--ing-white);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid var(--ing-border-grey);
+        }
+
         .next-step-icon svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: var(--ing-orange);
         }
 
         .next-step-info h4 {
             font-weight: 600;
             color: var(--ing-blue);
-            margin-bottom: 4px;
-            font-size: 15px;
+            margin-bottom: 2px;
+            font-size: 13px;
         }
 
         .next-step-info p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--ing-grey);
             line-height: 1.4;
         }
@@ -757,47 +805,52 @@
         .next-step-date .date {
             font-weight: 700;
             color: var(--ing-blue);
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .next-step-date .label {
-            font-size: 12px;
+            font-size: 10px;
             color: var(--ing-orange);
-            font-weight: 500;
+            font-weight: 600;
             margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Statistics Card */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 12px;
         }
 
         .stat-item {
             background-color: var(--ing-light-grey);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 16px;
+            border-radius: 6px;
             text-align: center;
+            border: 1px solid var(--ing-border-grey);
         }
 
         .stat-value {
-            font-size: 32px;
+            font-size: 22px;
             font-weight: 700;
-            color: var(--ing-orange);
-            margin-bottom: 4px;
+            color: var(--ing-blue);
+            margin-bottom: 2px;
         }
 
         .stat-label {
-            font-size: 14px;
+            font-size: 11px;
             color: var(--ing-grey);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         /* Info Box */
         .info-box {
-            background-color: rgba(255, 102, 0, 0.08);
-            border: 1px solid rgba(255, 102, 0, 0.2);
-            border-radius: 8px;
+            background-color: rgba(0, 0, 102, 0.04);
+            border: 1px solid rgba(0, 0, 102, 0.1);
+            border-radius: 6px;
             padding: 16px;
             display: flex;
             align-items: flex-start;
@@ -805,27 +858,28 @@
         }
 
         .info-box svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--ing-orange);
+            width: 20px;
+            height: 20px;
+            fill: var(--ing-blue);
             flex-shrink: 0;
             margin-top: 2px;
         }
 
         .info-box p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--ing-black);
+            line-height: 1.6;
         }
 
         .info-box strong {
-            color: var(--ing-orange);
+            color: var(--ing-blue);
         }
 
         /* Documents Card */
         .document-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
         }
 
         .document-item {
@@ -834,29 +888,32 @@
             gap: 12px;
             padding: 12px;
             background-color: var(--ing-light-grey);
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            border: 1px solid transparent;
         }
 
         .document-item:hover {
-            background-color: var(--ing-border-grey);
+            background-color: var(--ing-white);
+            border-color: var(--ing-border-grey);
         }
 
         .document-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background-color: var(--ing-white);
-            border-radius: 8px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--ing-border-grey);
         }
 
         .document-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--ing-indigo);
+            width: 18px;
+            height: 18px;
+            fill: var(--ing-blue);
         }
 
         .document-info {
@@ -865,19 +922,21 @@
 
         .document-name {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--ing-black);
         }
 
         .document-status {
-            font-size: 12px;
+            font-size: 11px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .document-status.complete {
-            color: #4CAF50;
+            color: #28a745;
         }
 
         .document-status.pending {
@@ -894,37 +953,38 @@
         .contact-person {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             padding-bottom: 16px;
             border-bottom: 1px solid var(--ing-border-grey);
         }
 
         .contact-avatar {
-            width: 56px;
-            height: 56px;
-            background-color: var(--ing-indigo);
+            width: 48px;
+            height: 48px;
+            background-color: var(--ing-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--ing-white);
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .contact-details h4 {
             font-weight: 600;
             color: var(--ing-black);
+            font-size: 14px;
         }
 
         .contact-details p {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--ing-grey);
         }
 
         .contact-actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
 
         /* Buttons */
@@ -933,10 +993,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.2s ease;
             text-decoration: none;
@@ -953,23 +1013,23 @@
         }
 
         .btn-secondary {
-            background-color: var(--ing-indigo);
+            background-color: var(--ing-blue);
             color: var(--ing-white);
         }
 
         .btn-secondary:hover {
-            background-color: #3d3c8c;
+            background-color: #000044;
         }
 
         .btn-outline {
             background-color: transparent;
-            border: 2px solid var(--ing-orange);
-            color: var(--ing-orange);
+            border: 1px solid var(--ing-border-grey);
+            color: var(--ing-blue);
         }
 
         .btn-outline:hover {
-            background-color: var(--ing-orange);
-            color: var(--ing-white);
+            background-color: var(--ing-light-grey);
+            border-color: var(--ing-blue);
         }
 
         .btn-full {
@@ -980,12 +1040,12 @@
         .faq-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
         }
 
         .faq-item {
             border: 1px solid var(--ing-border-grey);
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
         }
 
@@ -993,7 +1053,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px;
+            padding: 14px 16px;
             cursor: pointer;
             background-color: var(--ing-white);
             transition: background-color 0.2s ease;
@@ -1005,13 +1065,13 @@
 
         .faq-question h4 {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--ing-black);
         }
 
         .faq-question svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: var(--ing-grey);
             transition: transform 0.3s ease;
         }
@@ -1033,7 +1093,7 @@
         }
 
         .faq-answer p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--ing-grey);
             line-height: 1.6;
         }
@@ -1041,38 +1101,40 @@
         /* Expectation Box */
         .expectation-box {
             background-color: var(--ing-light-grey);
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 20px;
             text-align: center;
+            border: 1px solid var(--ing-border-grey);
         }
 
         .expectation-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             background-color: var(--ing-white);
             border-radius: 50%;
-            margin: 0 auto 16px;
+            margin: 0 auto 14px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--ing-border-grey);
         }
 
         .expectation-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--ing-indigo);
+            width: 20px;
+            height: 20px;
+            fill: var(--ing-blue);
         }
 
         .expectation-text {
-            font-size: 14px;
-            color: var(--ing-black);
-            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--ing-grey);
+            margin-bottom: 6px;
         }
 
         .expectation-highlight {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--ing-indigo);
+            color: var(--ing-blue);
         }
 
         /* Modal Styles */
@@ -1083,9 +1145,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 1000;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.25s ease;
         }
 
         .modal-overlay.active {
@@ -1101,20 +1163,20 @@
 
         .modal-content {
             background-color: var(--ing-white);
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 600px;
+            border-radius: 8px;
+            padding: 28px;
+            max-width: 560px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
             position: relative;
-            animation: slideUp 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.25s ease;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
         }
 
         @keyframes slideUp {
             from {
-                transform: translateY(30px);
+                transform: translateY(20px);
                 opacity: 0;
             }
             to {
@@ -1125,10 +1187,10 @@
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
+            top: 16px;
+            right: 16px;
+            width: 28px;
+            height: 28px;
             background-color: var(--ing-light-grey);
             border-radius: 50%;
             display: flex;
@@ -1143,25 +1205,25 @@
         }
 
         .modal-close svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: var(--ing-black);
         }
 
         .modal-header {
-            margin-bottom: 24px;
-            padding-right: 40px;
+            margin-bottom: 20px;
+            padding-right: 36px;
         }
 
         .modal-title {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--ing-blue);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .modal-subtitle {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--ing-grey);
         }
 
@@ -1171,7 +1233,8 @@
         }
 
         .modal-body p {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
         }
 
         .modal-body strong {
@@ -1183,16 +1246,18 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .document-status-badge.complete {
-            background-color: rgba(76, 175, 80, 0.1);
-            color: #4CAF50;
+            background-color: rgba(40, 167, 69, 0.1);
+            color: #28a745;
         }
 
         .document-status-badge.pending {
@@ -1202,27 +1267,28 @@
 
         /* Chat Modal Styles */
         .chat-modal {
-            max-width: 500px;
+            max-width: 480px;
         }
 
         .chat-messages {
             background-color: var(--ing-light-grey);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            min-height: 200px;
-            max-height: 400px;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+            min-height: 180px;
+            max-height: 360px;
             overflow-y: auto;
+            border: 1px solid var(--ing-border-grey);
         }
 
         .chat-message {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             animation: messageSlideIn 0.3s ease;
         }
 
         @keyframes messageSlideIn {
             from {
-                transform: translateY(10px);
+                transform: translateY(8px);
                 opacity: 0;
             }
             to {
@@ -1241,10 +1307,11 @@
 
         .chat-bubble {
             display: inline-block;
-            padding: 12px 16px;
-            border-radius: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
             max-width: 80%;
             word-wrap: break-word;
+            font-size: 13px;
         }
 
         .chat-message.advisor .chat-bubble {
@@ -1259,7 +1326,7 @@
         }
 
         .chat-sender {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--ing-grey);
             margin-bottom: 4px;
             font-weight: 600;
@@ -1267,15 +1334,15 @@
 
         .chat-input-container {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
 
         .chat-input {
             flex: 1;
-            padding: 12px 16px;
-            border: 2px solid var(--ing-border-grey);
-            border-radius: 8px;
-            font-size: 14px;
+            padding: 10px 14px;
+            border: 1px solid var(--ing-border-grey);
+            border-radius: 6px;
+            font-size: 13px;
             font-family: 'Open Sans', Arial, Helvetica, sans-serif;
             transition: border-color 0.2s ease;
         }
@@ -1291,17 +1358,18 @@
         }
 
         .chat-send-btn {
-            padding: 12px 24px;
+            padding: 10px 18px;
             background-color: var(--ing-orange);
             color: var(--ing-white);
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 13px;
             cursor: pointer;
             transition: background-color 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .chat-send-btn:hover {
@@ -1309,8 +1377,8 @@
         }
 
         .chat-send-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: var(--ing-white);
         }
 
@@ -1331,24 +1399,29 @@
 
         .next-step-item.expanded .next-step-details {
             max-height: 300px;
-            padding-top: 16px;
-            margin-top: 16px;
+            padding-top: 14px;
+            margin-top: 14px;
         }
 
         .next-step-details p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--ing-grey);
             line-height: 1.6;
-            padding: 16px;
-            background-color: var(--ing-light-grey);
-            border-radius: 8px;
+            padding: 14px;
+            background-color: var(--ing-white);
+            border-radius: 6px;
             margin: 0;
+            border: 1px solid var(--ing-border-grey);
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .side-column {
+                order: -1;
             }
         }
 
@@ -1362,20 +1435,26 @@
             }
 
             .dashboard-container {
-                padding: 0 16px;
-                margin: 16px auto;
+                padding: 16px;
             }
 
             .welcome-section {
-                padding: 24px;
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .welcome-meta {
+                text-align: center;
+                margin-top: 12px;
             }
 
             .welcome-title {
-                font-size: 22px;
+                font-size: 18px;
             }
 
             .card {
-                padding: 20px;
+                padding: 16px;
             }
 
             .stats-grid {
@@ -1393,7 +1472,7 @@
 
             .next-step-date {
                 margin-left: 0;
-                margin-top: 12px;
+                margin-top: 10px;
             }
         }
     </style>
@@ -1403,7 +1482,7 @@
     <header class="header">
         <div class="header-left">
             <img src="images/INGlogotrans.png" alt="ING Logo" class="logo">
-            <span class="header-title">Hypotheek Dashboard</span>
+            <span class="header-title">Hypothecaire Financiering</span>
         </div>
         <div class="header-user">
             <div class="notification-bell">
@@ -1412,7 +1491,7 @@
                 </svg>
                 <span class="notification-badge">3</span>
             </div>
-            <div class="user-name">Jan de Vries</div>
+            <div class="user-name">J. de Vries</div>
             <div class="user-avatar">JV</div>
         </div>
     </header>
@@ -1420,9 +1499,9 @@
     <!-- Notification Dropdown -->
     <div class="notification-dropdown">
         <div class="notification-header">
-            <h3>Meldingen</h3>
+            <h3>Notificaties</h3>
             <div style="display: flex; align-items: center; gap: 12px;">
-                <span class="mark-all-read">Markeer alles als gelezen</span>
+                <span class="mark-all-read">Als gelezen markeren</span>
                 <svg class="checkmark-icon" viewBox="0 0 24 24">
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                 </svg>
@@ -1436,9 +1515,9 @@
                     </svg>
                 </div>
                 <div class="notification-content">
-                    <div class="notification-title">Documenten goedgekeurd</div>
-                    <div class="notification-text">Al uw ingediende documenten zijn gecontroleerd en goedgekeurd.</div>
-                    <div class="notification-time">Vandaag om 14:23</div>
+                    <div class="notification-title">Documentatie gevalideerd</div>
+                    <div class="notification-text">De ingediende onderliggende stukken zijn conform de acceptatiecriteria bevonden.</div>
+                    <div class="notification-time">Vandaag 14:23</div>
                 </div>
             </div>
             <div class="notification-item unread">
@@ -1448,9 +1527,9 @@
                     </svg>
                 </div>
                 <div class="notification-content">
-                    <div class="notification-title">Kredietbeoordeling gestart</div>
-                    <div class="notification-text">We zijn begonnen met het beoordelen van uw financiële situatie. Dit duurt 3-5 werkdagen.</div>
-                    <div class="notification-time">Vandaag om 10:15</div>
+                    <div class="notification-title">Kredietwaardigheidsanalyse geïnitieerd</div>
+                    <div class="notification-text">De beoordeling van uw financiële draagkracht is in behandeling genomen. Verwachte doorlooptijd: 3-5 werkdagen.</div>
+                    <div class="notification-time">Vandaag 10:15</div>
                 </div>
             </div>
             <div class="notification-item unread">
@@ -1460,9 +1539,9 @@
                     </svg>
                 </div>
                 <div class="notification-content">
-                    <div class="notification-title">Bericht van uw adviseur</div>
-                    <div class="notification-text">Marieke Bakker heeft u een bericht gestuurd over de volgende stappen.</div>
-                    <div class="notification-time">Gisteren om 16:42</div>
+                    <div class="notification-title">Correspondentie van uw relatiemanager</div>
+                    <div class="notification-text">M. Bakker heeft u een bericht gestuurd inzake de vervolgprocedure.</div>
+                    <div class="notification-time">Gisteren 16:42</div>
                 </div>
             </div>
             <div class="notification-item">
@@ -1472,8 +1551,8 @@
                     </svg>
                 </div>
                 <div class="notification-content">
-                    <div class="notification-title">Salarisstroken ontvangen</div>
-                    <div class="notification-text">We hebben uw laatste 3 salarisstroken succesvol ontvangen.</div>
+                    <div class="notification-title">Loonspecificaties ontvangen</div>
+                    <div class="notification-text">De aangeleverde loonstroken (3 perioden) zijn succesvol verwerkt in uw dossier.</div>
                     <div class="notification-time">2 dagen geleden</div>
                 </div>
             </div>
@@ -1484,8 +1563,8 @@
                     </svg>
                 </div>
                 <div class="notification-content">
-                    <div class="notification-title">Aanvraag geregistreerd</div>
-                    <div class="notification-text">Uw hypotheekaanvraag is succesvol ingediend en geregistreerd in ons systeem.</div>
+                    <div class="notification-title">Financieringsaanvraag geregistreerd</div>
+                    <div class="notification-text">Uw hypotheekaanvraag is formeel in behandeling genomen en voorzien van een dossiernummer.</div>
                     <div class="notification-time">3 dagen geleden</div>
                 </div>
             </div>
@@ -1496,8 +1575,14 @@
     <main class="dashboard-container">
         <!-- Welcome Section -->
         <section class="welcome-section">
-            <h1 class="welcome-title">Welkom terug, Jan</h1>
-            <p class="welcome-subtitle">Bekijk hier de voortgang van uw hypotheekaanvraag voor Hoofdstraat 123, Amsterdam</p>
+            <div class="welcome-content">
+                <h1 class="welcome-title">Cliëntportaal Hypothecaire Financiering</h1>
+                <p class="welcome-subtitle">Statusoverzicht financieringsaanvraag — Object: Hoofdstraat 123, Amsterdam</p>
+            </div>
+            <div class="welcome-meta">
+                <strong>Dossiernummer HYP-2026-04851</strong>
+                Rekeninghouder: J. de Vries
+            </div>
         </section>
 
         <!-- Dashboard Grid -->
@@ -1511,13 +1596,13 @@
                             <svg viewBox="0 0 24 24" class="card-icon">
                                 <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
                             </svg>
-                            Voortgang aanvraag
+                            Processtatus Financieringsaanvraag
                         </h2>
-                        <span class="card-badge">3 van 5 stappen</span>
+                        <span class="card-badge">Fase 3 van 5</span>
                     </div>
 
                     <div class="last-update">
-                        <span>Laatste update: 28 januari 2026, 10:15</span>
+                        <span>Laatste mutatie: 28 januari 2026, 10:15 uur</span>
                     </div>
 
                     <div class="progress-timeline">
@@ -1529,23 +1614,23 @@
                                 </svg>
                             </div>
                             <div class="step-content">
-                                <h3 class="step-title">Aanvraag Ontvangen</h3>
-                                <p class="step-description">Uw aanvraag is succesvol ingediend en geregistreerd.</p>
+                                <h3 class="step-title">Aanvraag Geregistreerd</h3>
+                                <p class="step-description">Uw financieringsverzoek is formeel in behandeling genomen en toegewezen aan de acceptatieafdeling.</p>
                                 <span class="step-duration">
                                     <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                                    Afgerond op 15 jan 2026
+                                    Afgerond: 15 jan 2026
                                 </span>
                                 <div class="step-details">
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat is er gebeurd?</div>
-                                            <div class="step-detail-text">Uw hypotheekverzoek is ontvangen en in ons systeem opgenomen. We hebben alles gecontroleerd en uw dossier is klaar voor de volgende stap.</div>
+                                            <div class="step-detail-title">Procesomschrijving</div>
+                                            <div class="step-detail-text">Uw hypothecaire financieringsaanvraag is geregistreerd in ons dossierbeheersysteem. De aangeleverde gegevens zijn gevalideerd op volledigheid en het dossier is doorgeleid naar de volgende verwerkingsfase.</div>
                                         </div>
                                     </div>
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat wordt er van u verwacht?</div>
-                                            <div class="step-detail-text">U hoeft op dit moment niets te doen. We zullen u contacteren als we nog informatie nodig hebben.</div>
+                                            <div class="step-detail-title">Vereiste actie cliënt</div>
+                                            <div class="step-detail-text">Er zijn momenteel geen aanvullende handelingen van uw zijde benodigd. Bij eventuele onduidelijkheden in de aangeleverde documentatie wordt u proactief gecontacteerd.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1560,23 +1645,23 @@
                                 </svg>
                             </div>
                             <div class="step-content">
-                                <h3 class="step-title">Documenten Gecontroleerd</h3>
-                                <p class="step-description">Alle benodigde documenten zijn ontvangen en goedgekeurd.</p>
+                                <h3 class="step-title">Documentatiecontrole Voltooid</h3>
+                                <p class="step-description">De aangeleverde onderliggende stukken zijn getoetst aan de acceptatiecriteria en akkoord bevonden.</p>
                                 <span class="step-duration">
                                     <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                                    Afgerond op 18 jan 2026
+                                    Afgerond: 18 jan 2026
                                 </span>
                                 <div class="step-details">
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Welke documenten hebben we gecontroleerd?</div>
-                                            <div class="step-detail-text">We hebben uw werkgeversverklaring, salarisstroken en koopovereenkomst bekeken. Alles ziet er goed uit.</div>
+                                            <div class="step-detail-title">Getoetste documenten</div>
+                                            <div class="step-detail-text">De werkgeversverklaring, loonspecificaties en koopovereenkomst zijn gevalideerd op authenticiteit, actualiteit en conformiteit met de geldende acceptatienormen.</div>
                                         </div>
                                     </div>
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat gebeurt er nu?</div>
-                                            <div class="step-detail-text">Nu gaan we uw financiële situatie onderzoeken. Dit doen we door uw inkomsten te checken en te kijken of u de hypotheek kunt betalen.</div>
+                                            <div class="step-detail-title">Vervolgtraject</div>
+                                            <div class="step-detail-text">De kredietwaardigheidsanalyse wordt nu uitgevoerd, waarbij uw inkomensgegevens worden geverifieerd bij de relevante bronregistraties en de maximale leencapaciteit wordt bepaald.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1587,23 +1672,23 @@
                         <div class="timeline-step active">
                             <div class="step-indicator active">3</div>
                             <div class="step-content">
-                                <h3 class="step-title">Kredietbeoordeling</h3>
-                                <p class="step-description">Uw financiële gegevens worden beoordeeld door onze acceptatieafdeling.</p>
+                                <h3 class="step-title">Kredietwaardigheidsanalyse</h3>
+                                <p class="step-description">Uw financiële draagkracht wordt momenteel beoordeeld door de acceptatiecommissie conform de vigerende kredietrichtlijnen.</p>
                                 <span class="step-duration">
                                     <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                                    Geschatte duur: 3-5 werkdagen
+                                    Verwachte doorlooptijd: 3-5 werkdagen
                                 </span>
                                 <div class="step-details">
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat onderzoeken we?</div>
-                                            <div class="step-detail-text">We kijken naar uw inkomsten, schulden en spaarcapaciteit. Zo bepalen we of u de hypotheek veilig kan betalen en hoeveel geld we u kunnen lenen.</div>
+                                            <div class="step-detail-title">Toetsingscriteria</div>
+                                            <div class="step-detail-text">De analyse omvat verificatie van uw bruto-inkomen bij de Belastingdienst, beoordeling van bestaande financiële verplichtingen, en vaststelling van de loan-to-income ratio conform de Tijdelijke Regeling Hypothecair Krediet.</div>
                                         </div>
                                     </div>
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat kunt u inmiddels doen?</div>
-                                            <div class="step-detail-text">Zorg dat u bereikbaar bent. Als we vragen hebben, stellen we die graag snel. U kunt ook van tevoren al nadenken over welke rente u wilt.</div>
+                                            <div class="step-detail-title">Aanbevelingen tijdens wachttijd</div>
+                                            <div class="step-detail-text">Gelieve uw bereikbaarheid te waarborgen voor eventuele aanvullende informatieverzoeken. U kunt alvast de gewenste rentevastperiode en aflossingsvorm in overweging nemen.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1614,23 +1699,23 @@
                         <div class="timeline-step">
                             <div class="step-indicator pending">4</div>
                             <div class="step-content">
-                                <h3 class="step-title">Taxatie Woning</h3>
-                                <p class="step-description">Een onafhankelijke taxateur beoordeelt de waarde van de woning.</p>
+                                <h3 class="step-title">Taxatie Onderpand</h3>
+                                <p class="step-description">Een NRVT-gecertificeerd taxateur zal een onafhankelijke marktwaardebepaling van het onderpand uitvoeren.</p>
                                 <span class="step-duration">
                                     <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                                    Geschatte duur: 5-7 werkdagen
+                                    Verwachte doorlooptijd: 5-7 werkdagen
                                 </span>
                                 <div class="step-details">
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Waarom doen we een taxatie?</div>
-                                            <div class="step-detail-text">De taxateur controleert of het huis werkelijk zoveel waard is als u betaalt. Dit is voor beide partijen veilig.</div>
+                                            <div class="step-detail-title">Doel van de taxatie</div>
+                                            <div class="step-detail-text">De taxatie dient ter vaststelling van de marktwaarde in het economisch verkeer en de executiewaarde, welke bepalend zijn voor de maximale loan-to-value ratio van de financiering.</div>
                                         </div>
                                     </div>
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat gaat er gebeuren?</div>
-                                            <div class="step-detail-text">We plannen een afspraak in met de taxateur. Hij bezoekt het huis, maakt foto's en schrijft een rapport. U hoeft niet aanwezig te zijn.</div>
+                                            <div class="step-detail-title">Procedure</div>
+                                            <div class="step-detail-text">Na positieve kredietbeoordeling wordt automatisch een taxateur geïnstrueerd. Het taxatierapport wordt rechtstreeks aan ons geleverd conform het uniforme taxatiemodel hypotheken.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1641,23 +1726,23 @@
                         <div class="timeline-step">
                             <div class="step-indicator pending">5</div>
                             <div class="step-content">
-                                <h3 class="step-title">Definitief Akkoord & Offerte</h3>
-                                <p class="step-description">U ontvangt de definitieve hypotheekofferte ter ondertekening.</p>
+                                <h3 class="step-title">Bindende Offerte & Passering</h3>
+                                <p class="step-description">Na finale accordering ontvangt u het bindende financieringsvoorstel ter ondertekening.</p>
                                 <span class="step-duration">
                                     <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                                    Geschatte duur: 2-3 werkdagen
+                                    Verwachte doorlooptijd: 2-3 werkdagen
                                 </span>
                                 <div class="step-details">
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat staat er in het akkoord?</div>
-                                            <div class="step-detail-text">Het officiële document met alle afspraken: het bedrag, de rente, de looptijd en de voorwaarden. Dit bespreekt uw adviseur graag met u door.</div>
+                                            <div class="step-detail-title">Inhoud offertedocumentatie</div>
+                                            <div class="step-detail-text">De bindende offerte bevat de definitieve hoofdsom, rentepercentage, rentevastperiode, aflossingschema en alle bijzondere bepalingen. Uw relatiemanager zal de bepalingen met u doornemen.</div>
                                         </div>
                                     </div>
                                     <div class="step-detail-item">
                                         <div class="step-detail-content">
-                                            <div class="step-detail-title">Wat moet u doen?</div>
-                                            <div class="step-detail-text">U leest alles goed door en ondertekent het document. Daarna gaat uw hypotheek van start. U bent klaar voor uw nieuwe thuis!</div>
+                                            <div class="step-detail-title">Vereiste handelingen</div>
+                                            <div class="step-detail-text">Na accordering van de offerte wordt de hypotheekakte opgesteld door de notaris. Bij de passering worden de geldlening en het hypotheekrecht geformaliseerd en wordt de financiering uitgekeerd.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1673,7 +1758,7 @@
                             <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
                                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                             </svg>
-                            Wat doet ING nu?
+                            Lopende Procesactiviteit
                         </h2>
                     </div>
                     <div class="action-content">
@@ -1683,8 +1768,8 @@
                             </svg>
                         </div>
                         <div class="action-text">
-                            <h3>Uw inkomen wordt geverifieerd</h3>
-                            <p>Onze acceptatieafdeling controleert uw werkgeversverklaring en salarisstroken bij de belastingdienst. Dit gebeurt automatisch en veilig.</p>
+                            <h3>Inkomensverificatie in uitvoering</h3>
+                            <p>De acceptatieafdeling verifieert momenteel uw arbeidsrechtelijke positie en inkomensgegeven bij de Belastingdienst middels een geautomatiseerde koppeling met het UWV-polisadministratie.</p>
                         </div>
                     </div>
                 </div>
@@ -1696,7 +1781,7 @@
                             <svg viewBox="0 0 24 24" class="card-icon">
                                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
                             </svg>
-                            Volgende Stappen
+                            Aanstaande Processtappen
                         </h2>
                     </div>
                     <div class="next-step-content">
@@ -1707,15 +1792,15 @@
                                 </svg>
                             </div>
                             <div class="next-step-info">
-                                <h4>Taxateur bezoekt de woning</h4>
-                                <p>Na goedkeuring kredietbeoordeling wordt automatisch een taxateur ingepland.</p>
+                                <h4>Inplannen taxatie-inspectie</h4>
+                                <p>Na positief advies kredietcommissie wordt automatisch een taxatieopdracht verstrekt.</p>
                             </div>
                             <div class="next-step-date">
                                 <div class="date">27 jan</div>
-                                <div class="label">Verwacht</div>
+                                <div class="label">Geprognosticeerd</div>
                             </div>
                             <div class="next-step-details">
-                                <p>De taxatie is een belangrijk onderdeel van uw hypotheekaanvraag. Een gecertificeerde taxateur bezoekt de woning en beoordeelt de waarde op basis van de staat, ligging en vergelijkbare woningen in de buurt. Dit rapport gebruiken wij om te bepalen of het hypotheekbedrag in verhouding staat tot de werkelijke waarde van de woning. De taxatie duurt gemiddeld 1-2 uur en u hoeft niet aanwezig te zijn, maar het kan wel handig zijn om eventuele vragen direct te kunnen beantwoorden.</p>
+                                <p>De taxatie vormt een integraal onderdeel van het acceptatietraject. Een bij het Nederlands Register Vastgoed Taxateurs aangesloten taxateur zal het onderpand inspecteren en een marktwaardebepaling opstellen conform het geldende taxatieprotocol. Het rapport dient ter onderbouwing van de loan-to-value ratio en wordt rechtstreeks aan de bank geleverd. Gemiddelde inspectieduur bedraagt 45-90 minuten; uw aanwezigheid is niet verplicht doch wordt geadviseerd.</p>
                             </div>
                         </div>
                         <div class="next-step-item">
@@ -1725,15 +1810,15 @@
                                 </svg>
                             </div>
                             <div class="next-step-info">
-                                <h4>U ontvangt bericht van ons</h4>
-                                <p>Wij informeren u per e-mail en in dit dashboard over de uitkomst.</p>
+                                <h4>Uitslag kredietbeoordeling</h4>
+                                <p>U ontvangt schriftelijke notificatie van het advies van de acceptatiecommissie.</p>
                             </div>
                             <div class="next-step-date">
                                 <div class="date">29 jan</div>
-                                <div class="label">Verwacht</div>
+                                <div class="label">Geprognosticeerd</div>
                             </div>
                             <div class="next-step-details">
-                                <p>Zodra de kredietbeoordeling is afgerond, ontvangt u van ons een uitgebreid bericht met de uitkomst. In dit bericht leggen we uit wat de vervolgstappen zijn en of er eventueel nog aanvullende informatie nodig is. U krijgt deze informatie zowel per e-mail als in dit dashboard, zodat u altijd en overal de status kunt bekijken. Ook kunt u op dat moment eventuele vragen stellen aan uw adviseur via de chat functie.</p>
+                                <p>Na afronding van de kredietwaardigheidsanalyse ontvangt u een formele terugkoppeling met het oordeel van de acceptatiecommissie. Bij positief advies worden de vervolgstappen richting offerte geïnitieerd. Mocht aanvullende informatie benodigd zijn, dan ontvangt u specificatie daarvan met de bijbehorende aanleveringstermijn. Alle communicatie geschiedt zowel via dit portaal als per e-mail naar uw geregistreerde correspondentieadres.</p>
                             </div>
                         </div>
                     </div>
@@ -1749,13 +1834,13 @@
                             <svg viewBox="0 0 24 24" class="card-icon">
                                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                             </svg>
-                            Uw Aanvraag
+                            Financieringsoverzicht
                         </h2>
                     </div>
                     <div class="stats-grid">
                         <div class="stat-item">
                             <div class="stat-value">€425.000</div>
-                            <div class="stat-label">Hypotheekbedrag</div>
+                            <div class="stat-label">Hoofdsom</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-value">30 jaar</div>
@@ -1772,15 +1857,15 @@
                     </div>
 
                     <!-- Expectation Box -->
-                    <div class="expectation-box" style="margin-top: 20px;">
+                    <div class="expectation-box" style="margin-top: 16px;">
                         <div class="expectation-icon">
                             <svg viewBox="0 0 24 24">
                                 <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
                             </svg>
                         </div>
-                        <p class="expectation-text">Vergelijkbare aanvragen kregen gemiddeld binnen</p>
+                        <p class="expectation-text">Gemiddelde doorlooptijd vergelijkbare dossiers</p>
                         <div class="expectation-highlight">3 weken</div>
-                        <p class="expectation-text" style="margin-top: 4px;">een definitief antwoord</p>
+                        <p class="expectation-text" style="margin-top: 4px;">tot definitieve accordering</p>
                     </div>
                 </div>
 
@@ -1791,7 +1876,7 @@
                             <svg viewBox="0 0 24 24" class="card-icon">
                                 <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
                             </svg>
-                            Documenten
+                            Dossierdocumentatie
                         </h2>
                     </div>
                     <div class="document-list">
@@ -1804,10 +1889,10 @@
                             <div class="document-info">
                                 <div class="document-name">Werkgeversverklaring</div>
                                 <div class="document-status complete">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#4CAF50">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#28a745">
                                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                     </svg>
-                                    Goedgekeurd
+                                    Gevalideerd
                                 </div>
                             </div>
                         </div>
@@ -1818,12 +1903,12 @@
                                 </svg>
                             </div>
                             <div class="document-info">
-                                <div class="document-name">Salarisstroken (3x)</div>
+                                <div class="document-name">Loonspecificaties (3x)</div>
                                 <div class="document-status complete">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#4CAF50">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#28a745">
                                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                     </svg>
-                                    Goedgekeurd
+                                    Gevalideerd
                                 </div>
                             </div>
                         </div>
@@ -1836,10 +1921,10 @@
                             <div class="document-info">
                                 <div class="document-name">Koopovereenkomst</div>
                                 <div class="document-status complete">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#4CAF50">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#28a745">
                                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                     </svg>
-                                    Goedgekeurd
+                                    Gevalideerd
                                 </div>
                             </div>
                         </div>
@@ -1855,7 +1940,7 @@
                                     <svg viewBox="0 0 24 24" width="14" height="14" fill="#FF6600">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                                     </svg>
-                                    Wachten op taxatie
+                                    In afwachting
                                 </div>
                             </div>
                         </div>
@@ -1869,15 +1954,15 @@
                             <svg viewBox="0 0 24 24" class="card-icon">
                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
-                            Vragen?
+                            Contact Relatiemanager
                         </h2>
                     </div>
                     <div class="contact-info">
                         <div class="contact-person">
                             <div class="contact-avatar">MB</div>
                             <div class="contact-details">
-                                <h4>Marieke Bakker</h4>
-                                <p>Uw hypotheekadviseur</p>
+                                <h4>M. Bakker</h4>
+                                <p>Senior Hypotheekadviseur</p>
                             </div>
                         </div>
                         <div class="contact-actions">
@@ -1885,13 +1970,13 @@
                                 <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
                                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                 </svg>
-                                Stuur bericht
+                                Correspondentie
                             </button>
                             <button class="btn btn-outline btn-full">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="#FF6600">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="#000066">
                                     <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
                                 </svg>
-                                Bel: 020-123 4567
+                                020-123 4567
                             </button>
                         </div>
                     </div>
@@ -1904,41 +1989,41 @@
                             <svg viewBox="0 0 24 24" class="card-icon">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
                             </svg>
-                            Veelgestelde Vragen
+                            Frequent Gestelde Vragen
                         </h2>
                     </div>
                     <div class="faq-list">
                         <div class="faq-item">
                             <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                                <h4>Waarom duurt de beoordeling zo lang?</h4>
+                                <h4>Wat verklaart de verwerkingsduur van de beoordeling?</h4>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
                                 </svg>
                             </div>
                             <div class="faq-answer">
-                                <p>Wij controleren zorgvuldig alle gegevens om u de beste hypotheek te kunnen aanbieden. Dit doen we onder andere door uw inkomen te verifiëren bij de Belastingdienst en werkgever.</p>
+                                <p>De kredietwaardigheidsanalyse omvat verificatie van inkomensgegevens bij externe bronnen, toetsing aan de wettelijke leennormen, en beoordeling door de acceptatiecommissie conform de interne kredietrichtlijnen.</p>
                             </div>
                         </div>
                         <div class="faq-item">
                             <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                                <h4>Kan ik documenten nog aanpassen?</h4>
+                                <h4>Is aanpassing van ingediende documentatie mogelijk?</h4>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
                                 </svg>
                             </div>
                             <div class="faq-answer">
-                                <p>Ja, tot aan de definitieve goedkeuring kunt u documenten vervangen of toevoegen via uw adviseur. Neem hiervoor contact op met Marieke Bakker.</p>
+                                <p>Tot aan de definitieve accordering kunnen onderliggende stukken worden aangevuld of vervangen. Gelieve contact op te nemen met uw relatiemanager voor de correcte procedure en eventuele impact op de doorlooptijd.</p>
                             </div>
                         </div>
                         <div class="faq-item">
                             <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                                <h4>Wat als mijn aanvraag wordt afgewezen?</h4>
+                                <h4>Welke procedure volgt bij een negatief advies?</h4>
                                 <svg viewBox="0 0 24 24">
                                     <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
                                 </svg>
                             </div>
                             <div class="faq-answer">
-                                <p>Bij een afwijzing ontvangt u direct een duidelijke uitleg met de reden. Uw adviseur neemt binnen 24 uur contact met u op om alternatieven te bespreken.</p>
+                                <p>Bij een negatief acceptatieadvies ontvangt u schriftelijke motivering van de afwijzingsgronden. Uw relatiemanager neemt binnen 24 uur contact op om de mogelijkheden te bespreken, waaronder eventuele herstructurering van de financieringsaanvraag.</p>
                             </div>
                         </div>
                     </div>
@@ -1952,7 +2037,7 @@
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
             </svg>
             <p>
-                <strong>Wist u dat?</strong> U kunt dit dashboard 24/7 raadplegen. Bij elke statuswijziging ontvangt u automatisch een e-mail en pushbericht via de ING App. Zo bent u altijd op de hoogte van de laatste ontwikkelingen.
+                <strong>Systeemnotificatie:</strong> Dit cliëntportaal is 24 uur per dag, 7 dagen per week beschikbaar voor raadpleging. Bij statuswijzigingen ontvangt u automatisch een notificatie via e-mail alsmede een pushbericht via de ING Banking App, conform uw communicatievoorkeuren.
             </p>
         </div>
     </main>
@@ -1982,19 +2067,19 @@
                 </svg>
             </div>
             <div class="modal-header">
-                <h2 class="modal-title">Stel een vraag aan uw adviseur</h2>
-                <p class="modal-subtitle">Marieke Bakker - Hypotheekadviseur</p>
+                <h2 class="modal-title">Correspondentie met Relatiemanager</h2>
+                <p class="modal-subtitle">M. Bakker — Senior Hypotheekadviseur</p>
             </div>
             <div class="chat-messages" id="chatMessages">
                 <div class="chat-message advisor">
-                    <div class="chat-sender">Marieke Bakker</div>
+                    <div class="chat-sender">M. Bakker</div>
                     <div class="chat-bubble">
-                        Hallo Jan! Ik ben er om al uw vragen te beantwoorden. Waar kan ik u mee helpen?
+                        Geachte heer De Vries, welkom bij het correspondentieportaal. Heeft u vragen omtrent uw financieringsaanvraag? Ik sta tot uw beschikking.
                     </div>
                 </div>
             </div>
             <div class="chat-input-container">
-                <input type="text" class="chat-input" id="chatInput" placeholder="bijv. Wanneer kan ik de sleutels ophalen?">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Typ uw bericht...">
                 <button class="chat-send-btn" onclick="sendChatMessage()">
                     <svg viewBox="0 0 24 24">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -2209,46 +2294,46 @@
         const documentData = {
             'Werkgeversverklaring': {
                 status: 'complete',
-                statusText: 'Goedgekeurd',
+                statusText: 'Gevalideerd',
                 content: `<p><strong>Datum ontvangst:</strong> 16 januari 2026</p>
                          <p><strong>Werkgever:</strong> ABC Bedrijven B.V.</p>
                          <p><strong>Functie:</strong> Senior Projectmanager</p>
-                         <p><strong>Dienstverband:</strong> Onbepaalde tijd sinds 1 maart 2018</p>
-                         <p><strong>Bruto maandsalaris:</strong> €4.850,-</p>
-                         <p>Uw werkgeversverklaring is volledig en correct bevonden. We hebben alle benodigde informatie over uw dienstverband en salaris ontvangen. Dit document is gebruikt om uw inkomen te verifiëren en uw leencapaciteit te berekenen.</p>
-                         <p><strong>Status:</strong> Dit document is gecontroleerd en goedgekeurd door onze acceptatieafdeling op 18 januari 2026.</p>`
+                         <p><strong>Dienstverband:</strong> Contract voor onbepaalde tijd, ingangsdatum 1 maart 2018</p>
+                         <p><strong>Bruto jaarinkomen:</strong> €58.200,- (excl. vakantiegeld en overige emolumenten)</p>
+                         <p>De werkgeversverklaring is getoetst op conformiteit met de acceptatiecriteria. De arbeidsrechtelijke positie en de inkomensgegeven zijn geverifieerd en voldoen aan de gestelde normen voor hypothecaire financiering.</p>
+                         <p><strong>Validatiestatus:</strong> Document geaccordeerd door de acceptatieafdeling d.d. 18 januari 2026. Geen additionele documentatie benodigd.</p>`
             },
-            'Salarisstroken (3x)': {
+            'Loonspecificaties (3x)': {
                 status: 'complete',
-                statusText: 'Goedgekeurd',
-                content: `<p><strong>Periode:</strong> Oktober, november en december 2025</p>
-                         <p><strong>Gemiddeld bruto inkomen:</strong> €4.850,- per maand</p>
-                         <p><strong>Netto inkomen:</strong> Gemiddeld €3.240,- per maand</p>
-                         <p>We hebben uw laatste drie salarisstroken ontvangen en gecontroleerd. Deze komen overeen met de informatie uit uw werkgeversverklaring. Uw inkomen is stabiel en voldoende om de gevraagde hypotheek te kunnen dragen.</p>
-                         <p><strong>Bijzonderheden:</strong> Geen afwijkingen geconstateerd. Alle salariscomponenten zijn duidelijk en consistent.</p>
-                         <p><strong>Status:</strong> Alle drie de salarisstroken zijn goedgekeurd op 18 januari 2026.</p>`
+                statusText: 'Gevalideerd',
+                content: `<p><strong>Referentieperiode:</strong> Oktober, november, december 2025</p>
+                         <p><strong>Gemiddeld bruto maandinkomen:</strong> €4.850,-</p>
+                         <p><strong>Gemiddeld netto maandinkomen:</strong> €3.240,- (na inhouding loonheffing en premies)</p>
+                         <p>De aangeleverde loonspecificaties zijn geanalyseerd op consistentie en conformiteit met de werkgeversverklaring. De inkomensgegevens corresponderen met de opgegeven arbeidsvoorwaarden en zijn geverifieerd middels de UWV-polisadministratie.</p>
+                         <p><strong>Bijzonderheden:</strong> Geen afwijkingen of irregulariteiten geconstateerd. De salariscomponenten zijn conform de standaard loonstructuur.</p>
+                         <p><strong>Validatiestatus:</strong> Alle loonspecificaties geaccordeerd d.d. 18 januari 2026.</p>`
             },
             'Koopovereenkomst': {
                 status: 'complete',
-                statusText: 'Goedgekeurd',
-                content: `<p><strong>Woning:</strong> Hoofdstraat 123, 1012 AB Amsterdam</p>
-                         <p><strong>Koopsom:</strong> €475.000,- k.k.</p>
+                statusText: 'Gevalideerd',
+                content: `<p><strong>Onderpand:</strong> Hoofdstraat 123, 1012 AB Amsterdam</p>
+                         <p><strong>Koopsom:</strong> €475.000,- kosten koper</p>
                          <p><strong>Datum ondertekening:</strong> 10 januari 2026</p>
-                         <p><strong>Voorgestelde leverdatum:</strong> 15 maart 2026</p>
-                         <p><strong>Ontbindende voorwaarden:</strong> Financiering en bouwkundige keuring</p>
-                         <p>Uw koopovereenkomst is door ons juridisch team beoordeeld en goedgekeurd. Alle standaardclausules zijn aanwezig en er zijn geen ongebruikelijke voorwaarden die problemen kunnen veroorzaken voor de hypotheekverstrekking.</p>
-                         <p><strong>Let op:</strong> De ontbindende voorwaarde voor financiering is geldig tot 15 februari 2026. We streven ernaar om uw hypotheek ruim voor die datum definitief goedgekeurd te hebben.</p>`
+                         <p><strong>Beoogde transportdatum:</strong> 15 maart 2026</p>
+                         <p><strong>Ontbindende voorwaarden:</strong> Financieringsvoorbehoud en bouwkundige keuring</p>
+                         <p>De koopovereenkomst is beoordeeld door de juridische afdeling op conformiteit met de standaard NVM-voorwaarden en de acceptatierichtlijnen. Alle contractuele bepalingen zijn in overeenstemming met de geldende regelgeving.</p>
+                         <p><strong>Attentiepunt:</strong> Het financieringsvoorbehoud is geldig tot 15 februari 2026. De bank streeft ernaar de definitieve accordering ruim vóór deze termijn te realiseren.</p>`
             },
             'Taxatierapport': {
                 status: 'pending',
                 statusText: 'In afwachting',
-                content: `<p><strong>Status:</strong> Nog niet ontvangen</p>
-                         <p><strong>Geplande taxatiedatum:</strong> Te bepalen na goedkeuring kredietbeoordeling</p>
-                         <p><strong>Taxateur:</strong> Wordt nog toegewezen</p>
-                         <p>Het taxatierapport is een onafhankelijke waardering van de woning die u wilt kopen. Dit rapport wordt opgesteld door een gecertificeerde taxateur die is aangesloten bij het Nederlands Register Vastgoed Taxateurs (NRVT).</p>
-                         <p><strong>Wat wordt er getaxeerd?</strong></p>
-                         <p>De taxateur beoordeelt de staat van de woning, de ligging, vergelijkbare woningen in de buurt, en eventuele gebreken of bijzonderheden. Op basis hiervan wordt de marktwaarde bepaald.</p>
-                         <p><strong>Volgende stappen:</strong> Zodra de kredietbeoordeling is goedgekeurd, plannen we automatisch een taxateur in. U ontvangt hierover bericht en de taxateur zal contact met u opnemen om een afspraak te maken.</p>`
+                content: `<p><strong>Status:</strong> Document nog niet aangeleverd</p>
+                         <p><strong>Geplande taxatiedatum:</strong> Wordt geïnitieerd na positief advies kredietcommissie</p>
+                         <p><strong>Taxateur:</strong> Toewijzing in behandeling</p>
+                         <p>Het taxatierapport betreft een onafhankelijke marktwaardebepaling van het onderpand, opgesteld conform het Uniform Taxatiemodel Hypotheken door een NRVT-gecertificeerd taxateur.</p>
+                         <p><strong>Scope taxatie:</strong></p>
+                         <p>De taxateur beoordeelt de bouwkundige staat, de locatiekenmerken, en vergelijkbare transacties in de directe omgeving. Op basis hiervan wordt de marktwaarde vrij van huur en gebruik, alsmede de executiewaarde vastgesteld.</p>
+                         <p><strong>Vervolgproces:</strong> Na positieve kredietbeoordeling wordt automatisch een taxatieopdracht verstrekt. Het rapport wordt rechtstreeks aan de bank geleverd conform de geldende protocollen.</p>`
             }
         };
 
@@ -2309,7 +2394,7 @@
                 const userMessage = document.createElement('div');
                 userMessage.className = 'chat-message user';
                 userMessage.innerHTML = `
-                    <div class="chat-sender">Jan de Vries</div>
+                    <div class="chat-sender">J. de Vries</div>
                     <div class="chat-bubble">${message}</div>
                 `;
                 chatMessages.appendChild(userMessage);
@@ -2325,8 +2410,8 @@
                     const advisorMessage = document.createElement('div');
                     advisorMessage.className = 'chat-message advisor';
                     advisorMessage.innerHTML = `
-                        <div class="chat-sender">Marieke Bakker</div>
-                        <div class="chat-bubble">Bedankt voor uw vraag! Ik heb uw bericht ontvangen en zal zo snel mogelijk reageren. Meestal kunt u binnen 2 werkuren een reactie verwachten.</div>
+                        <div class="chat-sender">M. Bakker</div>
+                        <div class="chat-bubble">Geachte heer De Vries, hartelijk dank voor uw bericht. Uw vraag is in behandeling genomen en wordt zo spoedig mogelijk beantwoord. Conform onze service level agreement kunt u binnen 2 werkuren een inhoudelijke reactie verwachten.</div>
                     `;
                     chatMessages.appendChild(advisorMessage);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
